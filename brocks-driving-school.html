@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brocks Driving School | Driving Lessons in Cheam, Sutton & Surrey</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0D6B6B;
+    --teal-mid: #0E8080;
+    --teal-light: #12A0A0;
+    --orange: #E87020;
+    --orange-light: #F08C3C;
+    --sand: #FDF5EC;
+    --warm: #F8F2E8;
+    --cream: #FAFAF8;
+    --dark: #0A1A1A;
+    --text: #0D1E1E;
+    --grey: #6A8080;
+    --white: #FFFFFF;
+    --light-teal: #E8F5F5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: var(--teal);
+    border-bottom: 3px solid var(--orange);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .nav-b {
+    background: var(--orange);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    font-size: 1.1rem;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+
+  nav a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.83rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: white; }
+
+  .nav-cta {
+    background: var(--orange) !important;
+    color: white !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 700 !important;
+  }
+
+  .nav-cta:hover { background: var(--orange-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 74px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--teal) 100%);
+    opacity: 0.95;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232,112,32,0.15);
+    border: 1px solid rgba(232,112,32,0.3);
+    color: var(--orange-light);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.8rem;
+    width: fit-content;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 6.5vw, 6rem);
+    color: white;
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title .orange { color: var(--orange-light); display: block; }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 460px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-trevor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-left: 3px solid var(--orange);
+    padding: 0.8rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+
+  .trevor-avatar {
+    width: 40px; height: 40px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .trevor-name { font-weight: 500; color: white; font-size: 0.9rem; }
+  .trevor-title { font-size: 0.72rem; color: rgba(255,255,255,0.45); font-weight: 300; margin-top: 0.1rem; }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .btn-orange {
+    background: var(--orange);
+    color: white;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-orange:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    border: 1.5px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 400;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--orange-light); background: rgba(232,112,32,0.1); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--orange-light);
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  /* HERO RIGHT */
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-right-inner {
+    width: 100%;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-main-card {
+    background: white;
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(10,26,26,0.4);
+    border-top: 5px solid var(--orange);
+  }
+
+  .hero-car-big { font-size: 3.5rem; display: block; margin-bottom: 0.6rem; animation: pulse 2.5s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+  .hero-card-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--teal); letter-spacing: 0.05em; }
+  .hero-card-loc { font-size: 0.78rem; color: var(--grey); margin-bottom: 1rem; font-weight: 300; }
+
+  .hero-card-rating { display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+  .hcr-stars { color: var(--orange); font-size: 0.95rem; }
+  .hcr-score { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--teal); }
+  .hcr-count { font-size: 0.72rem; color: var(--grey); }
+
+  .hero-fact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .hero-fact {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .hf-icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+  .hf-title { font-size: 0.78rem; font-weight: 500; color: white; }
+  .hf-sub { font-size: 0.68rem; color: rgba(255,255,255,0.4); font-weight: 300; margin-top: 0.1rem; }
+
+  /* STRIP */
+  .strip {
+    background: var(--orange);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .strip-item { color: white; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+
+  /* WHY */
+  .why {
+    padding: 7rem 5rem;
+    background: var(--light-teal);
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal-mid);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--orange); }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: var(--teal);
+    letter-spacing: 0.03em;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .section-sub {
+    font-size: 0.92rem;
+    color: var(--grey);
+    font-weight: 300;
+    line-height: 1.85;
+    max-width: 520px;
+    margin-bottom: 3.5rem;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .why-card {
+    background: white;
+    border-radius: 4px;
+    padding: 2rem 1.8rem;
+    border: 1px solid rgba(13,107,107,0.08);
+    border-top: 4px solid var(--teal-mid);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(13,107,107,0.1); }
+
+  .why-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .why-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--teal); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+  .why-desc { font-size: 0.87rem; color: var(--grey); line-height: 1.75; font-weight: 300; }
+
+  /* LESSONS */
+  .lessons {
+    padding: 7rem 5rem;
+    background: var(--teal);
+  }
+
+  .lessons .section-eyebrow { color: rgba(255,255,255,0.4); }
+  .lessons .section-eyebrow::before { background: var(--orange); }
+  .lessons .section-title { color: white; }
+  .lessons .section-sub { color: rgba(255,255,255,0.4); }
+
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .lesson-card {
+    background: var(--teal);
+    padding: 2.2rem 1.8rem;
+    transition: background 0.25s;
+    position: relative;
+  }
+
+  .lesson-card:hover { background: var(--teal-mid); }
+
+  .lesson-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .lesson-card:hover::after { transform: scaleX(1); }
+
+  .lesson-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .lesson-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: white; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+  .lesson-desc { font-size: 0.87rem; color: rgba(255,255,255,0.5); line-height: 1.75; font-weight: 300; }
+
+  /* ABOUT */
+  .about {
+    padding: 7rem 5rem;
+    background: var(--sand);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    background: var(--teal);
+    border-radius: 4px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-light));
+  }
+
+  .about-num { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: white; line-height: 1; }
+  .about-stars { font-size: 1.3rem; color: var(--orange-light); display: block; margin: 0.3rem 0; }
+  .about-count { font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .about-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 1.8rem 0; }
+
+  .about-list { display: flex; flex-direction: column; gap: 0.9rem; }
+  .about-item { display: flex; align-items: center; gap: 0.8rem; font-size: 0.87rem; color: rgba(255,255,255,0.5); font-weight: 300; }
+  .about-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+
+  .about-text p { font-size: 0.92rem; color: rgba(13,30,30,0.6); line-height: 1.9; font-weight: 300; margin-bottom: 1.2rem; }
+  .about-text p strong { color: var(--teal); font-weight: 500; }
+
+  /* REVIEWS */
+  .reviews { padding: 7rem 5rem; background: var(--cream); }
+
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem; }
+
+  .review-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 4px;
+    border: 1px solid rgba(13,107,107,0.07);
+    border-top: 4px solid var(--teal-mid);
+  }
+
+  .review-stars { color: var(--orange); font-size: 0.85rem; margin-bottom: 0.8rem; }
+  .review-text { font-size: 0.9rem; color: rgba(13,30,30,0.65); line-height: 1.78; font-weight: 300; font-style: italic; margin-bottom: 1.2rem; }
+  .review-author { font-size: 0.78rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em; }
+  .review-type { font-size: 0.74rem; color: var(--grey); font-weight: 300; margin-top: 0.15rem; }
+
+  /* CONTACT */
+  .contact {
+    padding: 7rem 5rem;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact .section-eyebrow { color: rgba(18,160,160,0.5); }
+  .contact .section-eyebrow::before { background: var(--orange); }
+  .contact .section-title { color: white; }
+  .contact .section-sub { color: rgba(255,255,255,0.4); }
+
+  .contact-items { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 0.5rem; }
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+
+  .contact-icon {
+    width: 2.5rem; height: 2.5rem;
+    background: rgba(14,128,128,0.2);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+
+  .c-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange-light); margin-bottom: 0.2rem; }
+  .c-value { font-size: 0.95rem; color: white; font-weight: 300; line-height: 1.5; }
+  .c-value a { color: white; text-decoration: none; }
+
+  .contact-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-top: 4px solid var(--orange);
+    padding: 2.5rem;
+    border-radius: 2px;
+  }
+
+  .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: white; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+
+  .form-group { margin-bottom: 1.1rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.35rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.75rem 1rem;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group select option { background: var(--dark); }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--orange); }
+  .form-group textarea { height: 85px; resize: vertical; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.04em;
+  }
+
+  .btn-submit:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--teal);
+    border-top: 3px solid var(--orange);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; color: white; font-size: 1.2rem; letter-spacing: 0.08em; display: flex; align-items: center; gap: 0.6rem; }
+  .footer-b { background: var(--orange); color: white; padding: 0.2rem 0.5rem; border-radius: 2px; }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+  .fade-up { opacity: 0; transform: translateY(24px); animation: fadeUp 0.65s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.25s; }
+  .d3 { animation-delay: 0.4s; }
+  .d4 { animation-delay: 0.55s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .hero-right { padding: 2rem 1.5rem; }
+    .why { padding: 5rem 1.5rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .lessons { padding: 5rem 1.5rem; }
+    .lessons-grid { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+    .reviews { padding: 5rem 1.5rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .contact { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-b">B</div>
+    Brocks Driving School
+  </div>
+  <ul>
+    <li><a href="#why">Why Trevor</a></li>
+    <li><a href="#lessons">Lessons</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Lesson</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag fade-up">🚗 5.0 Stars · 98 Reviews · Cheam & Sutton</div>
+    <h1 class="hero-title fade-up d1">
+      Learn to drive.
+      <span class="orange">Pass first time.</span>
+    </h1>
+    <p class="hero-sub fade-up d2">
+      Professional driving lessons in Cheam, Sutton, and across Surrey with Trevor — a fully qualified DSA-approved instructor with 98 five-star reviews and an outstanding first-time pass rate.
+    </p>
+    <div class="hero-trevor fade-up d2">
+      <div class="trevor-avatar">T</div>
+      <div>
+        <div class="trevor-name">Trevor</div>
+        <div class="trevor-title">DSA Approved Driving Instructor · Cheam & Sutton</div>
+      </div>
+    </div>
+    <div class="hero-buttons fade-up d3">
+      <a href="#contact" class="btn-orange">Book a Lesson with Trevor</a>
+      <a href="tel:07526695256" class="btn-ghost">07526 695256</a>
+    </div>
+    <div class="hero-stats fade-up d4">
+      <div>
+        <div class="stat-num">5.0★</div>
+        <div class="stat-label">Perfect Rating</div>
+      </div>
+      <div>
+        <div class="stat-num">98</div>
+        <div class="stat-label">Reviews</div>
+      </div>
+      <div>
+        <div class="stat-num">1st</div>
+        <div class="stat-label">Time Pass Rate</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-inner">
+      <div class="hero-main-card">
+        <span class="hero-car-big">🚗</span>
+        <div class="hero-card-name">Brocks Driving School</div>
+        <div class="hero-card-loc">Cheam, Sutton · Surrey</div>
+        <div class="hero-card-rating">
+          <span class="hcr-stars">★★★★★</span>
+          <span class="hcr-score">5.0</span>
+          <span class="hcr-count">(98 reviews)</span>
+        </div>
+      </div>
+      <div class="hero-fact-row">
+        <div class="hero-fact">
+          <span class="hf-icon">😊</span>
+          <div class="hf-title">Patient & fun</div>
+          <div class="hf-sub">Nervous learners</div>
+        </div>
+        <div class="hero-fact">
+          <span class="hf-icon">🏆</span>
+          <div class="hf-title">First time</div>
+          <div class="hf-sub">Pass rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-item">✓ DSA Approved</span>
+  <span class="strip-item">✓ Nervous learners welcome</span>
+  <span class="strip-item">✓ Block booking discounts</span>
+  <span class="strip-item">✓ Intensive courses available</span>
+  <span class="strip-item">✓ Cheam, Sutton & Surrey</span>
+</div>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <p class="section-eyebrow">Why Choose Trevor</p>
+  <h2 class="section-title">98 Five-Star Reasons</h2>
+  <p class="section-sub">Trevor's approach to driving instruction is unlike any other — patient, personable, and genuinely passionate about helping every pupil succeed.</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">😄</span>
+      <h3 class="why-title">Patient & Great Fun</h3>
+      <p class="why-desc">Trevor is renowned for making lessons enjoyable. His friendly, humorous approach takes the pressure off — pupils relax, learn faster, and look forward to every lesson.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🎯</span>
+      <h3 class="why-title">Tailored to You</h3>
+      <p class="why-desc">No two learners are the same. Trevor adapts his teaching style to suit your ability, pace, and confidence — building the specific skills you need.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🏆</span>
+      <h3 class="why-title">Outstanding Pass Rate</h3>
+      <p class="why-desc">Pupils consistently pass first time — often with minimal faults. Trevor's thorough preparation means you arrive at your test fully ready and fully confident.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🎓</span>
+      <h3 class="why-title">DSA Approved</h3>
+      <p class="why-desc">Fully qualified DSA-approved driving instructor with extensive experience teaching learners of all abilities. Your safety and progress always come first.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">💬</span>
+      <h3 class="why-title">Clear Feedback</h3>
+      <p class="why-desc">Trevor is praised for his clear, constructive communication. You always know exactly what you need to work on — no vague comments, just practical guidance.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">⏱️</span>
+      <h3 class="why-title">Always on Time</h3>
+      <p class="why-desc">Punctual to the minute, every time. Pupils praise Trevor's reliability and professionalism — you can always count on him showing up exactly when he says.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LESSONS -->
+<section class="lessons" id="lessons">
+  <p class="section-eyebrow">Lessons</p>
+  <h2 class="section-title">The Right Lesson For You</h2>
+  <p class="section-sub">Whatever stage you're at, Trevor has you covered — from your very first lesson to passing your test and beyond.</p>
+
+  <div class="lessons-grid">
+    <div class="lesson-card">
+      <span class="lesson-icon">🚗</span>
+      <h3 class="lesson-name">Beginner Lessons</h3>
+      <p class="lesson-desc">First lesson just £20. Trevor builds your confidence from scratch at exactly your pace — no pressure, no rushing, just steady progress.</p>
+    </div>
+    <div class="lesson-card">
+      <span class="lesson-icon">⚡</span>
+      <h3 class="lesson-name">Intensive Courses</h3>
+      <p class="lesson-desc">Pass your driving test in just 2 weeks with Trevor's intensive course. Perfect if you need your licence fast without sacrificing quality.</p>
+    </div>
+    <div class="lesson-card">
+      <span class="lesson-icon">📋</span>
+      <h3 class="lesson-name">Test Preparation</h3>
+      <p class="lesson-desc">Nearly ready? Trevor's focused test prep identifies your weak areas and ensures you walk into the test centre fully prepared and confident.</p>
+    </div>
+    <div class="lesson-card">
+      <span class="lesson-icon">📦</span>
+      <h3 class="lesson-name">Block Bookings</h3>
+      <p class="lesson-desc">Book a block of lessons and save money. Consistent practice is the fastest, most cost-effective route to passing your test.</p>
+    </div>
+    <div class="lesson-card">
+      <span class="lesson-icon">🛣️</span>
+      <h3 class="lesson-name">Motorway Lessons</h3>
+      <p class="lesson-desc">Build confidence on motorways with dedicated tuition for faster road driving — essential for new drivers and returners alike.</p>
+    </div>
+    <div class="lesson-card">
+      <span class="lesson-icon">🔄</span>
+      <h3 class="lesson-name">Refresher Lessons</h3>
+      <p class="lesson-desc">Passed years ago but lost your confidence? Trevor gets you back on the road safely and comfortably — no judgement, just great teaching.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <div class="about-num">98</div>
+    <span class="about-stars">★★★★★</span>
+    <div class="about-count">5.0 · Perfect Google Rating</div>
+    <div class="about-divider"></div>
+    <div class="about-list">
+      <div class="about-item"><span class="about-dot"></span>DSA Approved Driving Instructor</div>
+      <div class="about-item"><span class="about-dot"></span>Patient, friendly and great fun</div>
+      <div class="about-item"><span class="about-dot"></span>Outstanding first-time pass rate</div>
+      <div class="about-item"><span class="about-dot"></span>Beginner lessons from just £20</div>
+      <div class="about-item"><span class="about-dot"></span>Cheam, Sutton & surrounding Surrey</div>
+    </div>
+  </div>
+  <div class="about-text">
+    <p class="section-eyebrow">About Trevor</p>
+    <h2 class="section-title">Cheam's Most Loved Instructor</h2>
+    <p>Trevor is the instructor behind Brocks Driving School — and with a <strong>perfect 5.0-star rating across 98 reviews</strong>, his reputation in Cheam and Sutton is second to none. Pupils don't just pass with Trevor — they become genuinely confident, capable drivers.</p>
+    <p>His teaching style combines <strong>patience, humour, and real expertise</strong>. He tailors every lesson to the individual, adapts when something isn't working, and communicates clearly throughout. Learners who were nervous or had struggled with other instructors consistently praise Trevor for turning everything around.</p>
+    <p>Based in Cheam with lessons covering Sutton and surrounding Surrey — <strong>first lesson from just £20</strong>. Get in touch today to book.</p>
+    <a href="#contact" class="btn-orange" style="display: inline-block; margin-top: 1.5rem;">Book a Lesson</a>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <p class="section-eyebrow">Reviews</p>
+  <h2 class="section-title">98 Five-Star Reviews</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Thanks to Trevor I was able to quickly understand UK roads and pass with ease. He's very cool, approachable and always shows up exactly on time. I recommend anyone in Sutton to take lessons with Trevor."</p>
+      <p class="review-author">— Vignesh R.</p>
+      <p class="review-type">Cheam · Passed First Time</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Passed first time with 2 minors. Great instructor — showed me everything by the book and made me feel confident and relaxed. Quick progression and all-round knowledge. Highly recommend."</p>
+      <p class="review-author">— Ned S.</p>
+      <p class="review-type">Sutton · Passed First Time</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Trevor is patient, supportive and highly knowledgeable. He helped me overcome my anxiety about driving completely. His friendly approach makes lessons enjoyable and really builds your confidence."</p>
+      <p class="review-author">— Gemma L.</p>
+      <p class="review-type">Cheam · Nervous Learner</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <p class="section-eyebrow">Book Now</p>
+    <h2 class="section-title">Ready to Get Started?</h2>
+    <p class="section-sub">Call Trevor or fill in the form — he'll get back to you quickly to get your lessons booked in.</p>
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <p class="c-label">Phone</p>
+          <p class="c-value"><a href="tel:07526695256">07526 695256</a></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <p class="c-label">Based At</p>
+          <p class="c-value">Brocks Drive, Cheam<br>Sutton, Surrey SM3 9UT</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🗺️</div>
+        <div>
+          <p class="c-label">Coverage</p>
+          <p class="c-value">Cheam · Sutton · Carshalton<br>Morden · Banstead · Surrey</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💰</div>
+        <div>
+          <p class="c-label">First Lesson</p>
+          <p class="c-value">Just £20 introductory rate<br>Block booking discounts available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <h3 class="form-title">Book a Lesson</h3>
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" placeholder="e.g. Sarah Smith">
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="e.g. 07700 900000">
+    </div>
+    <div class="form-group">
+      <label>Type of Lesson</label>
+      <select>
+        <option value="">Select...</option>
+        <option>Beginner Lessons</option>
+        <option>Intensive Course</option>
+        <option>Test Preparation</option>
+        <option>Block Booking</option>
+        <option>Motorway Lessons</option>
+        <option>Refresher Lessons</option>
+        <option>Not Sure — Please Advise</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Experience Level</label>
+      <select>
+        <option value="">Select...</option>
+        <option>Complete Beginner</option>
+        <option>Some Experience</option>
+        <option>Nearly Test Ready</option>
+        <option>Previously Passed</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Anything Else?</label>
+      <textarea placeholder="Tell Trevor anything useful..."></textarea>
+    </div>
+    <button class="btn-submit">Book My Lesson 🚗</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-b">B</div>
+    Brocks Driving School
+  </div>
+  <p class="footer-copy">© 2025 Brocks Driving School · Cheam, Sutton · 07526 695256</p>
+</footer>
+
+</body>
+</html>
